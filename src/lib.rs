@@ -1,5 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub fn encrypt(s: &str, shift: u32) -> String {
+   let mut cipher_text = String::new(); 
+   for l in s.chars() {
+        cipher_text.push(char::from_u32((l as u32) + shift).unwrap());
+    } 
+
+    cipher_text
 }
 
 #[cfg(test)]
@@ -8,7 +13,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        assert_eq!("dbu", encrypt("cat", 1));
     }
 }
